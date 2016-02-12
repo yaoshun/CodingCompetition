@@ -11,9 +11,9 @@ int main() {
     int n, d;
     cin >>n >>d;
     if (n % 2 == 0) {
-        cout << n / 2 + d;
+        cout << n / 2 + d << endl;
     } else {
-        cout << n / 2 + d + 1;
+        cout << n / 2 + d + 1 << endl;
     }
     return 0;
 }
