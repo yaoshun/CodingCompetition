@@ -47,7 +47,9 @@ int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
     int n;
     cin >> n;
-    
+
+    // Algorithm complexity Depending on the insert process.
+    // Without 
     vector<pair<long, pair<long, long>>> arr;
     for (int i = 0; i < n; i++) {
         int x, y, w;
