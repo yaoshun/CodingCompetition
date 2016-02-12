@@ -5,6 +5,7 @@
 #include <algorithm>
 using namespace std;
 
+// Can use tuple to simplify the coding process
 bool cmp(const pair<long, pair<long, long>>& a, pair<long, pair<long, long>>& b) {
     if (a.first != b.first) {
         return a.first < b.first;
