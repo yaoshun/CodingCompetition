@@ -5,6 +5,10 @@
 #include <algorithm>
 using namespace std;
 
+// Normal DP considering the size of the DP array.
+// Since the sequence doesn't need to be continuous.
+// There is a monotonic trend in the DP process.
+// The overall complexity in this case is O(n^3)
 
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
