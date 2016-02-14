@@ -1,0 +1,48 @@
+Shrink the biconnected components of the given graph and form the block-cut tree. (see this for more info on Block-Cut Tree ). 
+
+The property of a biconnected component is that there always exist two vertex disjoint paths between any two nodes, but the only condition is that size of the component should be greater than 2 . (A biconnected component of size two is just a bridge edge along with its end points.) 
+
+Hence, we build the block-cut tree and and for any given u,v , If they lie in the same component and the size of component is greater that 2, answer is yes else no. 
+
+To check whether u,v lie in the same component efficiently , we root the block-cut tree formed at any arbitrary vertex and check the following conditions:
+if u and v both are articulation vertices
+{
+    u = componentNumber[u];v = componentNumber[v];
+    if u == parent[parent[v]] and sizeof(parent[v])>2
+        answer is yes
+    else if v == parent[parent[u]] and sizeof(parent[u])>2
+        answer is yes
+    else if parent[u] == parent[v] and sizeof(parent[u])>2
+        answer is yes
+    else
+        answer is no
+}
+else if u is an articulation vertex
+{
+    u = componentNumber[u];v = componentNumber[v];
+    if v == parent[u] and sizeof(v)>2
+        answer is yes
+    else if u == parent[v] and sizeof(v)>2
+        answer is yes
+    else 
+        answer is no
+}
+else if v is an articulation vertex
+{
+    u = componentNumber[u];v = componentNumber[v];
+    if v == parent[u] and sizeof(u)>2
+        answer is yes
+    else if u == parent[v] and sizeof(u)>2
+        answer is yes
+    else 
+        answer is no
+}
+else
+{
+    u = componentNumber[u];v = componentNumber[v];
+    if u == v and sizeof(u)>2
+        answer is yes
+    else
+        answer is no
+}
+
