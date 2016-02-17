@@ -38,6 +38,7 @@ int main(){
             ed[i]--;
         }
 
+        // Originally 3D DP. dp[i][j][k] = min(abs(i - st[k] + dp[ed[k]][j][k + 1]), abs(j - st[k]) + dp[i][ed[k]][k + 1]) + abs(ed[k] - st[k]).
         // reversely DP, reduce to 2D.
         // Utilized symmetry.
         for (int i = 0; i < M; i++) {
