@@ -19,7 +19,7 @@ struct edge {
 vector<pair<int,int>> adj[3001];
 
 void dijkstra(int* d, int s, int n) {
-    for (int i = 0; i <= n; i++) {
+    for (int i = 1; i <= n; i++) {
         d[i] = INF;
     }
 
@@ -46,9 +46,9 @@ void dijkstra(int* d, int s, int n) {
             if (d[v2] > d[v] + cost) {
                 if (d[v2] != INF) {
                     // Erase the old one.
-                    if (q.find({d[v2], v2}) != q.end()) {
-                        q.erase(q.find({d[v2], v2}));
-                    }
+                    // the q.find here will not return empty.
+                    // Since it is set and have a higher tentative distance.
+                    q.erase(q.find({d[v2], v2}));
                 }
                 // update the cost.
                 d[v2] = d[v] + cost;
@@ -67,11 +67,11 @@ int main() {
     cin >> T;
     while (T--) {
         cin >> n >> m;
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             adj[i].clear();
         }
 
-        struct edge e[m + 1];
+        struct edge e[m];
         for (int i = 0; i < m; i++) {
             cin >> x >> y >> r >> t;
             e[i].x = x;
