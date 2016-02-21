@@ -57,6 +57,10 @@ bool bfs() {
             // Left to right use any adjacent.
             // righ to left use the current pairing.
             for (int v : adj[u]) {
+                // Either it is free then pairV[v] = NIL.
+                // Or it connects to a new u that we should continue to explore.
+                // INF also means unvisited.
+                // The visited u series of index will not have INF.
                 if (dist[pairV[v]] == INF) {
                     dist[pairV[v]] = dist[u] + 1;
                     q.push(pairV[v]);
