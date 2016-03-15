@@ -1,0 +1,21 @@
+The following is the general way to solve the impartial games like NIM.
+
+Definitions:
+1. A game is in a P-position if it secures a win for the Previous player. (before the current state/position)
+2. A game is in a N-position if it secures a win for the Next player.
+
+Assuming both player play optimally, there is definitely a fixed results. Therefore, a game is either a P-position of a N-position.
+
+Algorithm:
+
+backwards induction:
+1. label every terminal position as P.
+2. label every position that can reach a P position as N.
+3. For positions that only move to N positions, label P.
+4. at this point either all positions are labeled or return to step 2 and repeat the process until all positions are labled.
+
+Sprague Grundy Theorem:
+
+A directed graph G(X, F) where a directed graph, G is a pair(X, F) where X is a nonempty set of vertices (positions) and F is a function that gives for each x in X a subset of X, where each of them is a position reachable from x.
+
+The Sprague Grundy function of a graph, (X, F) is a function, g, defined on X and taking non-negative integer values, such that g(x) = min(n >= 0: n = g(y) for y in F(x)).
