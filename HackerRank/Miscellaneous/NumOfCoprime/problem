@@ -1,0 +1,7 @@
+Given an array of positive integers within the range of [1, 100000], for each number A[i], find the number in the range [1, A[i]] that is coprime to A[i].
+
+To solve this problem, we need to use the Euler function phi(n).
+
+phi(n) = n(1 - 1/p_1)(1 - 1/p_2)...(1 - 1/p_k)
+
+If p_1, p_2, ... p_k is the prime factor of n in its factorization formula.
