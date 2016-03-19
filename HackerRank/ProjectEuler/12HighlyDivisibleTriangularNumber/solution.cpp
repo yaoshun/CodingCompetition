@@ -19,7 +19,7 @@ void sieve() {
     for (i = 2; i * i <= MAX; i++) {
         if (primes[i]) {
             primeArr.push_back(i);
-            for (int j = 2 * i; j <= MAX; j += i) {
+            for (int j = i * i; j <= MAX; j += i) {
                 primes[j] = false;
             }
         }
