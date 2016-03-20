@@ -1,0 +1,3 @@
+According to the problem description, O(n^2) algorithm satisfies the solution.
+
+However, using self-balanced BST can reduce the complexity to O(nlogn)
