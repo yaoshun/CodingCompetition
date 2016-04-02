@@ -37,9 +37,9 @@ int main() {
             ll a = maxD + 1 + S;
             ll b = maxD - S;
             if ((maxD - S) % 2 == 0) {
-                b = (b / 2) % P;
+                b = b / 2;
             } else {
-                a = (a / 2) % P;
+                a = a / 2;
             }
 
             // Everything should mod P even before the multiplication to ensure correctness.
