@@ -1,0 +1,7 @@
+Consider the game for a long permutation: 
+
+claim 1: the last remaining increasing sequence under optimal strategies should be <=2
+
+proof: if not assume the last sequence is a<b<c, the loser must go through a stage in which contains abcde, and de could not be contained in abc subsequence.
+
+Besides, even remove a or b or c, he will lose the game in the next round(optimal assumption): means that ab or bc or ac could form a subsequence with d or e. consider four ranges [-8, a], [a,b], [b,c], [c,+8]. we could get that in ab, bc, or ac at least two sequence of ab or bc or ac could form subsequence with d. kick out the common node a. 
