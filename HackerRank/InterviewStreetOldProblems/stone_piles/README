@@ -1,0 +1,8 @@
+Basic rules:
+
+2^n is always a first lose game(BOB win game). when it is added to any pile, it keep the property of the original pile set. 
+
+copy of set is always a first lose game. and when it is added to any pile, it keep the property of the original set. like 5, 5 means that you could copy your opponent move to make it finish. No matter you start on it or not.
+
+Latest solution:
+This actually equals to a NIM game. 
