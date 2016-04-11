@@ -36,7 +36,7 @@ int main() {
         // Therefore we first locate at which time points the nth customer
         // will be served.
         ll st = 0;
-        ll ed = (ll)10000 * N;
+        ll ed = (ll)100000 * N;
         while (st < ed) {
             ll mid = st + (ed - st) / 2;
             if (countServed(mid, nums) < N) {
