@@ -11,8 +11,8 @@ int main() {
     int T;
     cin >> T;
 
-    for (int i = 0; i < T; i++) {
-        cout << "Case #" << (i + 1) << ": " << endl;
+    for (int t = 0; t < T; t++) {
+        cout << "Case #" << (t + 1) << ": " << endl;
     }    
     return 0;
 }
