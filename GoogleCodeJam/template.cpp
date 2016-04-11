@@ -5,6 +5,7 @@
 #include <unordered_map>
 #include <queue>
 #include <stack>
+typedef long long ll;
 using namespace std;
 
 int main() {
