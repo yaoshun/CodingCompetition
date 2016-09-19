@@ -5,58 +5,78 @@
 #include <algorithm>
 using namespace std;
 
+string t;
+string sentence;
+vector<string> words;
+
 // Failed a 3 test cases.
+// The case fails in second part of not calculating the min cost.
+// The min cost is independent of the first question.
 int main() {
     /* Enter your code here. Read input from STDIN. Print output to STDOUT */
-    string t;
     cin >> t;
-    vector<string> p;
-    string temp;
-    vector<size_t> pos;
-    bool res = true;
-    int cost = 0;
+    string tmp;
+    while (cin >> tmp) {
+        words.push_back(tmp);
+        sentence += tmp + " ";
+    }
+    // Remove the last space.
+    sentence.pop_back();
+    
     int cur = 0;
-    while (cin >> temp) {
-        size_t x = t.find(temp, cur);
-        if (x != string::npos) {
-            int diff = x - (p.empty() ? 0 : (cur + p.back().size()));
-            cost += abs(diff);
-            pos.push_back(x);
-            p.push_back(temp);
-            cur = x;
+    vector<pair<string, int>> found;
+    for (int i = 0; i < words.size(); i++) {
+        int foundPos = t.find(words[i], cur);
+        if (foundPos != string::npos) {
+            cur = foundPos + 1;
+            found.push_back(make_pair(words[i], foundPos));
         } else {
-            res = false;
             break;
         }
     }
     
-    if (!p.empty()) {
-        cost += t.size() - (cur + p.back().size());
-        cost += p.size() - 1;
+    if (found.size() == words.size()) {
+        cout << "YES\n";
+    } else {
+        cout << "NO\n";
     }
     
-    if (res) {
-        cout << "YES" << endl;
-        for (int i = 0; i < p.size(); i++) {
-            if (i != 0) cout << " ";
-            cout << p[i] << " " << pos[i] << " " << (pos[i] + p[i].size() - 1);
-        }
-        cout << endl;
-        cout << cost << endl;
+    if (found.size() == 0) {
+        cout << "0\n";
     } else {
-        cout << "NO" << endl;
-        if (p.empty()) {
-            cout << 0 << endl;
-        } else {
-            for (int i = 0; i < p.size(); i++) {
-                if (i != 0) cout << " ";
-                cout << p[i] << " " << pos[i] << " " << (pos[i] + p[i].size() - 1);
+        for (int i = 0; i < found.size(); i++) {
+            cout << found[i].first << " " << found[i].second << " " << (found[i].second + found[i].first.size() - 1);
+            if (i < found.size() - 1) {
+                cout << " ";
             }
-            cout << endl;
         }
-        cout << 0 << endl;
+        cout << "\n";
+    }
+    
+    // third line;
+    if (found.size() == words.size()) {
+        int m = t.size();
+        int n = sentence.size();
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1));
+        dp[0][0] = 0;
+        for (int i = 1; i <= m; i++) dp[i][0] = i;
+        for (int i = 1; i <= n; i++) dp[0][i] = i;
+        
+        // Just Edit distance calculation.
+        for (int i = 1; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                // Since there is no replacement operation.
+                // Add INF = 999999999 to avoid the problem.
+                dp[i][j] = min(dp[i-1][j], dp[i][j - 1]) + 1;
+                if (t[i-1] == sentence[j-1]) {
+                    dp[i][j] = min(dp[i][j], dp[i-1][j-1]);
+                }
+            }
+        }
+        cout << dp[m][n] << "\n";
+    } else {
+        cout << "0\n";
     }
     
     return 0;
 }
-
